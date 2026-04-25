@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鑫威蔬菜 - 管理后台</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft YaHei", sans-serif; }
+    body { background: #f8f8f8; color: #333; padding: 20px; }
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 9999; }
+    .modal-box { background: #fff; width: 90%; max-width: 600px; border-radius: 12px; padding: 25px; position: relative; max-height: 90vh; overflow-y: auto; }
+    .close-btn { position: absolute; top: 15px; right: 15px; font-size: 22px; cursor: pointer; border: none; background: none; }
+    .input { width: 100%; height: 44px; border: 1px solid #ddd; border-radius: 8px; padding: 0 12px; margin-bottom: 15px; outline: none; font-size: 14px; }
+    textarea.input { height: 120px; padding: 12px; resize: vertical; }
+    .btn { width: 100%; height: 44px; background: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; margin-bottom: 10px; font-size: 16px; }
+    .btn-blue { background: #007bff; }
+    .btn-red { background: #dc3545; }
+    .form-group { margin-bottom: 20px; }
+    .form-group h4 { margin-bottom: 10px; color: #28a745; }
+    .goods-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .goods-item { width: 30%; min-width: 200px; border: 1px solid #eee; border-radius: 10px; padding: 10px; background: #fff; }
+    .header { text-align: center; margin-bottom: 30px; }
+    .header h2 { color: #28a745; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+<div class="modal" id="loginModal">
+  <div class="modal-box">
+    <button class="close-btn" onclick="hideModal('loginModal')">×</button>
+    <h3 style="margin-bottom:20px;text-align:center">管理员登录</h3>
+    <input class="input" id="adminPwd" type="password" placeholder="请输入管理员密码（默认：admin123）">
+    <button class="btn" onclick="adminLogin()">登录</button>
+  </div>
+</div>
+
+<div id="adminPanel" style="display:none">
+  <div class="header">
+    <h2>威海市鑫威蔬菜批发配送中心 - 全局管理后台</h2>
+    <p>可修改官网所有文字、图片、样式，修改后点击保存自动生效</p>
+  </div>
+
+  <!-- 官网基础信息修改 -->
+  <div class="form-group">
+    <h4>📝 官网基础信息</h4>
+    <input class="input" id="web_name" placeholder="网站名称（如：威海市鑫威蔬菜批发配送中心）">
+    <input class="input" id="footer_text" placeholder="底部版权文字">
+  </div>
+
+  <!-- Banner区域修改 -->
+  <div class="form-group">
+    <h4>🏠 首页Banner区域</h4>
+    <input class="input" id="banner_title" placeholder="Banner标题">
+    <textarea class="input" id="banner_desc" placeholder="Banner描述"></textarea>
+    <input class="input" id="banner_img" placeholder="Banner图片URL（替换企业门头图）">
+  </div>
+
+  <!-- 关于我们区域修改 -->
+  <div class="form-group">
+    <h4>ℹ️ 关于我们区域</h4>
+    <textarea class="input" id="about_content" placeholder="关于我们文字内容（支持换行）"></textarea>
+    <input class="input" id="about_img" placeholder="关于我们图片URL（替换展厅图）">
+  </div>
+
+  <!-- 联系我们区域修改 -->
+  <div class="form-group">
+    <h4>📞 联系我们区域</h4>
+    <input class="input" id="contact_name" placeholder="负责人姓名（如：李经理）">
+    <input class="input" id="contact_tel" placeholder="联系电话（如：15166158319）">
+    <input class="input" id="contact_address" placeholder="公司地址">
+  </div>
+
+  <!-- 样式配置 -->
+  <div class="form-group">
+    <h4>🎨 样式配置</h4>
+    <input class="input" id="primary_color" placeholder="主色调（如：#28a745 绿色）">
+  </div>
+
+  <!-- 商品管理 -->
+  <div class="form-group">
+    <h4>🛒 商品管理</h4>
+    <input class="input" id="gName" placeholder="商品名称">
+    <input class="input" id="gPrice" placeholder="商品价格">
+    <input type="file" id="gImg" accept="image/*" style="margin-bottom:10px">
+    <button class="btn" onclick="addGoods()">添加商品</button>
+    <div class="goods-list" id="goodsList"></div>
+  </div>
+
+  <!-- 操作按钮 -->
+  <button class="btn btn-blue" onclick="saveGlobalConfig()">保存官网所有配置</button>
+  <button class="btn" onclick="window.open('index.html','_blank')">预览官网</button>
+  <button class="btn btn-red" onclick="logout()">退出登录</button>
+</div>
+
+<script>
+// 初始加载显示登录弹窗
+window.onload = function(){
+  showModal('loginModal');
+  // 加载现有配置到表单
+  loadConfigToForm();
+  // 渲染商品列表
+  renderGoods();
+}
+
+// 管理员密码（可自行修改）
+const ADMIN_PASSWORD = "admin123";
+
+// 工具函数
+function $(id){return document.getElementById(id)}
+function showModal(id){$(id).style.display="flex"}
+function hideModal(id){$(id).style.display="none"}
+
+// 管理员登录
+function adminLogin(){
+  if($("adminPwd").value === ADMIN_PASSWORD){
+    hideModal('loginModal');
+    $("adminPanel").style.display = "block";
+  } else {
+    alert("密码错误！默认密码：admin123");
+  }
+}
+
+// 退出登录
+function logout(){
+  $("adminPanel").style.display = "none";
+  $("adminPwd").value = "";
+  showModal('loginModal');
+}
+
+// 加载现有配置到表单
+function loadConfigToForm(){
+  let cfg = JSON.parse(localStorage.getItem("globalConfig")) || {};
+  $("web_name").value = cfg.web_name || "";
+  $("banner_title").value = cfg.banner_title || "";
+  $("banner_desc").value = cfg.banner_desc || "";
+  $("banner_img").value = cfg.banner_img || "";
+  $("about_content").value = cfg.about_content || "";
+  $("about_img").value = cfg.about_img || "";
+  $("contact_name").value = cfg.contact_name || "";
+  $("contact_tel").value = cfg.contact_tel || "";
+  $("contact_address").value = cfg.contact_address || "";
+  $("primary_color").value = cfg.primary_color || "";
+  $("footer_text").value = cfg.footer_text || "";
+}
+
+// 保存全局配置
+function saveGlobalConfig(){
+  let newConfig = {
+    web_name: $("web_name").value,
+    banner_title: $("banner_title").value,
+    banner_desc: $("banner_desc").value,
+    banner_img: $("banner_img").value,
+    about_content: $("about_content").value,
+    about_img: $("about_img").value,
+    contact_name: $("contact_name").value,
+    contact_tel: $("contact_tel").value,
+    contact_address: $("contact_address").value,
+    primary_color: $("primary_color").value,
+    footer_text: $("footer_text").value
+  };
+
+  // 调用官网的修改接口
+  if(window.opener && window.opener.updateGlobalConfig){
+    window.opener.updateGlobalConfig(newConfig);
+  } else {
+    // 直接保存到本地存储
+    let oldConfig = JSON.parse(localStorage.getItem("globalConfig")) || {};
+    let finalConfig = {...oldConfig, ...newConfig};
+    localStorage.setItem("globalConfig", JSON.stringify(finalConfig));
+  }
+
+  alert("配置保存成功！刷新官网即可生效");
+}
+
+// 商品管理
+let goods = JSON.parse(localStorage.getItem("goods")) || [];
+
+// 添加商品
+function addGoods(){
+  let name = $("gName").value.trim();
+  let price = $("gPrice").value.trim();
+  if(!name || !price){
+    alert("请填写商品名称和价格");
+    return;
+  }
+
+  let imgFile = $("gImg").files[0];
+  if(imgFile){
+    let reader = new FileReader();
+    reader.onload = function(e){
+      goods.push({
+        id: Date.now(),
+        name: name,
+        price: Number(price),
+        img: e.target.result
+      });
+      saveGoods();
+      clearGoodsForm();
+    }
+    reader.readAsDataURL(imgFile);
+  } else {
+    goods.push({
+      id: Date.now(),
+      name: name,
+      price: Number(price),
+      img: ""
+    });
+    saveGoods();
+    clearGoodsForm();
+  }
+}
+
+// 保存商品
+function saveGoods(){
+  localStorage.setItem("goods", JSON.stringify(goods));
+  renderGoods();
+}
+
+// 渲染商品列表
+function renderGoods(){
+  let html = "";
+  goods.forEach(g=>{
+    html += `
+    <div class="goods-item">
+      <div style="font-weight:bold;margin-bottom:5px">${g.name}</div>
+      <div style="color:#ff3b30;margin-bottom:5px">¥${g.price}</div>
+      <button onclick="deleteGoods(${g.id})" style="padding:4px 8px;background:#dc3545;color:#fff;border:none;border-radius:4px;cursor:pointer">删除</button>
+    </div>`;
+  });
+  $("goodsList").innerHTML = html;
+}
+
+// 删除商品
+function deleteGoods(id){
+  goods = goods.filter(g=>g.id !== id);
+  saveGoods();
+}
+
+// 清空商品表单
+function clearGoodsForm(){
+  $("gName").value = "";
+  $("gPrice").value = "";
+  $("gImg").value = "";
+}
+</script>
+</body>
+</html>

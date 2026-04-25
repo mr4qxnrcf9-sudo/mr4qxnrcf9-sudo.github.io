@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO核心优化：标题+描述+关键词（威海蔬菜批发核心词全覆盖） -->
+    <title>威海鑫威蔬菜批发配送-食堂承包-餐饮食材配送-威海蔬菜批发中心</title>
+    <meta name="description" content="威海市鑫威蔬菜批发配送中心主营威海蔬菜批发、餐饮食材配送、食堂承包服务，新鲜直采直供，价格实惠，威海全域快速配送，联系电话：15166158319">
+    <meta name="keywords" content="威海蔬菜批发,威海餐饮配送,威海食堂承包,鑫威蔬菜配送,威海蔬菜配送,威海食材配送">
+    <!-- 百度收录优化：告诉搜索引擎优先抓取 -->
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="威海市鑫威蔬菜批发配送中心">
+    <meta name="copyright" content="威海市鑫威蔬菜批发配送中心">
+    <!-- 移动端优化 -->
+    <meta name="format-detection" content="telephone=yes">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif}
+        html{scroll-behavior:smooth}
+        .container{max-width:1200px;margin:0 auto;padding:0 20px}
+        :root{--primary-color:#28a745;--text-color:#333;--light-bg:#f7fff9}
+        
+        /* 顶部导航 */
+        .nav{position:fixed;top:0;left:0;width:100%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1);z-index:999;padding:18px 0}
+        .nav .container{display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:22px;font-weight:bold;color:var(--primary-color)}
+        .menu{display:flex;gap:25px}
+        .menu a{text-decoration:none;color:var(--text-color);font-size:15px;font-weight:500}
+        .phone-top{background:var(--primary-color);color:#fff;padding:10px 16px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:bold}
+
+        /* 超大Banner（企业真实门头图） */
+        .banner{width:100%;height:100vh;background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)),url("https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/7545029157894e98879b7c2d0c3751da.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=202604252144381F9687648F2748513017&rrcfp=8a172a1a&x-expires=1777729478&x-signature=oLC5zwVvc0Age9Bckk45l%2FzXKkg%3D") no-repeat center center;background-size:cover;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;text-align:center;padding:20px;margin-top:70px}
+        .banner h1{font-size:38px;margin-bottom:15px;max-width:700px}
+        .banner p{font-size:18px;opacity:0.9;margin-bottom:30px;max-width:600px}
+        .banner-btn{background:var(--primary-color);color:#fff;padding:16px 40px;border-radius:50px;font-size:16px;font-weight:bold;border:none;cursor:pointer}
+
+        /* 区块通用 */
+        .section{padding:70px 0}
+        .title{text-align:center;font-size:28px;margin-bottom:15px;color:var(--text-color)}
+        .desc{text-align:center;color:#666;margin-bottom:50px;font-size:16px}
+
+        /* 关于我们（真实展厅图） */
+        .about{display:flex;flex-wrap:wrap;align-items:center;gap:30px}
+        .about-img{flex:1;min-width:300px;border-radius:16px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,0.1)}
+        .about-img img{width:100%;height:auto;display:block}
+        .about-text{flex:1;min-width:300px}
+        .about-text p{font-size:16px;line-height:1.9;color:#444;margin-bottom:15px}
+
+        /* 服务优势 */
+        .advantage{background:var(--light-bg);padding:70px 0}
+        .adv-box{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+        .adv-item{background:#fff;padding:30px 20px;border-radius:16px;text-align:center;box-shadow:0 3px 15px rgba(0,50,10,0.05)}
+        .adv-item h3{font-size:18px;margin-bottom:10px;color:var(--primary-color)}
+        .adv-item p{color:#666}
+
+        /* 产品展示（真实蔬菜图） */
+        .goods{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+        .goods-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+        .goods-img{width:100%;height:140px;object-fit:cover;background:#f5f5f5}
+        .goods-info{padding:12px}
+
+        /* 联系我们（超大醒目+一键拨号） */
+        .contact{background:var(--primary-color);color:#fff;text-align:center;padding:60px 0}
+        .contact h2{font-size:30px;margin-bottom:20px}
+        .contact .name{font-size:22px;font-weight:bold;margin-bottom:10px}
+        .contact .tel{font-size:36px;font-weight:bold;margin:20px 0;text-decoration:underline}
+        .contact a{color:#fff;text-decoration:none}
+        .contact-btn{background:#fff;color:var(--primary-color);padding:16px 36px;border-radius:50px;font-size:16px;font-weight:bold;border:none;margin-top:20px;cursor:pointer}
+
+        /* 底部（增加SEO信息） */
+        .footer{background:#222;color:#fff;text-align:center;padding:30px 0;font-size:14px}
+        .seo-footer{font-size:12px;margin-top:10px;color:#999}
+
+        /* 响应式适配 */
+        @media (max-width:768px){
+            .banner h1{font-size:28px}
+            .contact .tel{font-size:28px}
+            .menu{gap:15px}
+            .phone-top{padding:6px 10px;font-size:12px}
+        }
+    </style>
+    <!-- 百度收录快速引导（可选） -->
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            } else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+</head>
+
+<body>
+<!-- 导航 -->
+<div class="nav">
+    <div class="container">
+        <div class="logo">威海市鑫威蔬菜批发配送中心</div>
+        <div class="menu">
+            <a href="#home">首页</a>
+            <a href="#about">关于我们</a>
+            <a href="#advantage">服务优势</a>
+            <a href="#goods">产品展示</a>
+            <a href="#contact">联系我们</a>
+            <a href="#contact" class="phone-top">立即拨打电话</a>
+        </div>
+    </div>
+</div>
+
+<!-- 超大Banner（企业真实门头图） -->
+<div class="banner" id="home">
+    <h1>威海蔬菜批发 · 专业餐饮配送 · 食堂承包</h1>
+    <p>威海本地专业蔬菜批发配送服务商，一站式解决餐饮、食堂食材供应需求，新鲜直供，价格实惠</p>
+    <button class="banner-btn" onclick="location.href='#contact'">立即联系：15166158319</button>
+</div>
+
+<!-- 关于我们（真实展厅图） -->
+<div class="section" id="about">
+    <div class="container">
+        <div class="title">关于我们</div>
+        <div class="desc">威海蔬菜批发 · 新鲜健康 · 全城配送</div>
+        <div class="about">
+            <div class="about-img">
+                <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a764bb6529614467acf0214016207c56.jpg~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=202604252144381F9687648F2748513017&rrcfp=8a172a1a&x-expires=1777729478&x-signature=7jfsBkZ5uWfyzh8MdtD001vIcBg%3D" alt="威海鑫威蔬菜批发展厅">
+            </div>
+            <div class="about-text">
+                <p>威海市鑫威蔬菜批发配送中心，是威海本地极具规模与口碑的专业蔬菜批发配送企业，专注威海蔬菜批发、餐饮食材配送、食堂承包等核心业务。</p>
+                <p>我们拥有大型仓储、专业配送车队，货源直采直供，保证威海本地餐饮企业、学校食堂、单位食堂的食材新鲜与价格实惠。</p>
+                <p>公司覆盖威海全域蔬菜配送服务，坚持“品质第一、客户至上、价格透明”的服务理念，赢得威海广大客户长期信赖与支持。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 服务优势 -->
+<div class="advantage" id="advantage">
+    <div class="container">
+        <div class="title">我们的核心优势</div>
+        <div class="desc">威海蔬菜批发配送，专业值得信赖</div>
+        <div class="adv-box">
+            <div class="adv-item"><h3>威海源头直采</h3><p>产地直供，价格实惠</p></div>
+            <div class="adv-item"><h3>全程新鲜保障</h3><p>每日新鲜，品质稳定</p></div>
+            <div class="adv-item"><h3>威海餐饮配送</h3><p>定制方案，准时送达</p></div>
+            <div class="adv-item"><h3>食堂承包服务</h3><p>一站式托管，省心省力</p></div>
+            <div class="adv-item"><h3>威海全域配送</h3><p>快速响应，全城覆盖</p></div>
+            <div class="adv-item"><h3>售后无忧服务</h3><p>贴心售后，放心合作</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- 产品展示（真实蔬菜图） -->
+<div class="section" id="goods">
+    <div class="container">
+        <div class="title">产品展示</div>
+        <div class="desc">威海新鲜蔬菜 | 生鲜食材 | 一站式供应</div>
+        <div class="goods">
+            <div class="goods-item">
+                <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/edba168179434a87b1a071f17e2a247a.jpg~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=202604252144381F9687648F2748513017&rrcfp=8a172a1a&x-expires=1777729478&x-signature=%2Bdckj9OWTWdqJ%2FKubhD6Cl9SIJI%3D" class="goods-img" alt="威海新鲜小白菜批发">
+                <div class="goods-info">
+                    <div style="font-size:15px;font-weight:500;margin-bottom:4px">新鲜小白菜</div>
+                    <div style="color:#ff3b30;font-weight:bold">¥2.5/斤</div>
+                </div>
+            </div>
+            <div class="goods-item">
+                <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/edba168179434a87b1a071f17e2a247a.jpg~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=202604252144381F9687648F2748513017&rrcfp=8a172a1a&x-expires=1777729478&x-signature=%2Bdckj9OWTWdqJ%2FKubhD6Cl9SIJI%3D" class="goods-img" alt="威海西红柿批发">
+                <div class="goods-info">
+                    <div style="font-size:15px;font-weight:500;margin-bottom:4px">西红柿</div>
+                    <div style="color:#ff3b30;font-weight:bold">¥3.2/斤</div>
+                </div>
+            </div>
+            <div class="goods-item">
+                <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/edba168179434a87b1a071f17e2a247a.jpg~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=202604252144381F9687648F2748513017&rrcfp=8a172a1a&x-expires=1777729478&x-signature=%2Bdckj9OWTWdqJ%2FKubhD6Cl9SIJI%3D" class="goods-img" alt="威海土豆批发">
+                <div class="goods-info">
+                    <div style="font-size:15px;font-weight:500;margin-bottom:4px">土豆</div>
+                    <div style="color:#ff3b30;font-weight:bold">¥4.0/斤</div>
+                </div>
+            </div>
+            <div class="goods-item">
+                <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/edba168179434a87b1a071f17e2a247a.jpg~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=202604252144381F9687648F2748513017&rrcfp=8a172a1a&x-expires=1777729478&x-signature=%2Bdckj9OWTWdqJ%2FKubhD6Cl9SIJI%3D" class="goods-img" alt="威海大葱批发">
+                <div class="goods-info">
+                    <div style="font-size:15px;font-weight:500;margin-bottom:4px">大葱</div>
+                    <div style="color:#ff3b30;font-weight:bold">¥2.8/斤</div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:40px">
+            <button class="banner-btn" onclick="location.href='#contact'">咨询威海蔬菜批发价格</button>
+        </div>
+    </div>
+</div>
+
+<!-- 联系我们（超大醒目 + 一键拨号） -->
+<div class="contact" id="contact">
+    <div class="container">
+        <h2>📞 立即联系我们</h2>
+        <div class="name">负责人：李经理</div>
+        <div class="tel"><a href="tel:15166158319">151 6615 8319</a></div>
+        <p style="font-size:16px;margin-top:10px">地址：威海市蔬菜批发配送核心区域（具体地址可电话咨询）</p>
+        <button class="contact-btn" onclick="window.open('tel:15166158319')">点击立即拨号</button>
+    </div>
+</div>
+
+<!-- 底部（增加SEO信息） -->
+<div class="footer">
+    © 2025 威海市鑫威蔬菜批发配送中心 版权所有 | 威海蔬菜批发 · 威海餐饮配送 · 威海食堂承包
+    <div class="seo-footer">威海蔬菜批发找鑫威，新鲜直供，价格实惠，威海全域配送服务</div>
+</div>
+
+<script>
+// 全局配置加载
+function loadGlobalConfig(){
+    let cfg = JSON.parse(localStorage.getItem("globalConfig")) || {
+        web_name: "威海市鑫威蔬菜批发配送中心",
+        banner_img: "https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/7545029157894e98879b7c2d0c3751da.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=202604252144381F9687648F2748513017&rrcfp=8a172a1a&x-expires=1777729478&x-signature=oLC5zwVvc0Age9Bckk45l%2FzXKkg%3D",
+        banner_title: "威海蔬菜批发 · 专业餐饮配送 · 食堂承包",
+        banner_desc: "威海本地专业蔬菜批发配送服务商，一站式解决餐饮、食堂食材供应需求",
+        about_img: "https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a764bb6529614467acf0214016207c56.jpg~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=202604252144381F9687648F2748513017&rrcfp=8a172a1a&x-expires=1777729478&x-signature=7jfsBkZ5uWfyzh8MdtD001vIcBg%3D",
+        about_content: "<p>威海市鑫威蔬菜批发配送中心，是威海本地极具规模与口碑的专业蔬菜批发配送企业。</p><p>我们主营蔬菜批发、餐饮配送、食堂承包等业务，拥有大型仓储、专业配送车队，货源直采直供，保证新鲜与实惠。</p><p>公司致力于为威海各类餐饮企业、单位食堂提供高效、稳定、高性价比的一站式食材供应服务。</p>",
+        goods_default_img: "https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/edba168179434a87b1a071f17e2a247a.jpg~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=202604252144381F9687648F2748513017&rrcfp=8a172a1a&x-expires=1777729478&x-signature=%2Bdckj9OWTWdqJ%2FKubhD6Cl9SIJI%3D",
+        contact_tel: "15166158319",
+        contact_name: "李经理",
+        contact_address: "威海市蔬菜批发配送核心区域（具体地址可联系获取）",
+        footer_text: "© 2025 威海市鑫威蔬菜批发配送中心 版权所有 | 威海蔬菜批发 · 威海餐饮配送 · 威海食堂承包",
+        primary_color: "#28a745",
+        banner_height: "100vh",
+        section_padding: "70px 0"
+    };
+    document.querySelector(".banner").style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)),url("${cfg.banner_img}")`;
+    document.querySelector(".about-img img").src = cfg.about_img;
+    localStorage.setItem("globalConfig", JSON.stringify(cfg));
+    return cfg;
+}
+
+window.onload = function(){
+    const globalConfig = loadGlobalConfig();
+};
+
+// 管理员全局修改接口
+window.updateGlobalConfig = function(newConfig){
+    let oldConfig = JSON.parse(localStorage.getItem("globalConfig")) || {};
+    let finalConfig = {...oldConfig, ...newConfig};
+    localStorage.setItem("globalConfig", JSON.stringify(finalConfig));
+    location.reload();
+}
+</script>
+</body>
+</html>
